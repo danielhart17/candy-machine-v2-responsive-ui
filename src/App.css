@@ -1,15 +1,16 @@
 /* Customize your main colors in :root variables */
 :root {
-  --main-background-color: #343A50;
-  --card-background-color: #804980;
-  --countdown-background-color: #433765;
+  --main-background-color: #dbb418;
+  --card-background-color: #dbb418;
+  --countdown-background-color: #151a1f;
   --main-text-color:#F7F6F4;
   --title-text-color:#3CBA8B;
+  --mint-button-background-color: #151a1f;
 }
 
 body{
 /*  background-color:var(--main-background-color);*/
-  background: url("img/background.png");
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url("img/giphy.gif");
   background-size: cover;
   font-family: 'Patrick Hand', cursive;
   font-size: 1.1em;
@@ -23,5 +24,7 @@ h3{
 font-weight: normal;
 }
 
-
-
+.crossmint {
+  margin: 10px auto;
+  background-color: #3CBA8B;
+}

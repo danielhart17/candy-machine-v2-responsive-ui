@@ -20,8 +20,10 @@ import {
     mintMultipleToken,
     CANDY_MACHINE_PROGRAM,
 } from "./candy-machine";
+// Add this import line at the top
+import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
 
-const cluster = process.env.REACT_APP_SOLANA_NETWORK!.toString();
+const cluster = process.env.REACT_APP_SOLANA_NETWORK?.toString();
 const decimals = process.env.REACT_APP_SPL_TOKEN_TO_MINT_DECIMALS ? +process.env.REACT_APP_SPL_TOKEN_TO_MINT_DECIMALS!.toString() : 9;
 const splTokenName = process.env.REACT_APP_SPL_TOKEN_TO_MINT_NAME ? process.env.REACT_APP_SPL_TOKEN_TO_MINT_NAME.toString() : "TOKEN";
 
@@ -588,11 +590,11 @@ const Home = (props: HomeProps) => {
                 <MintContainer>
                     <DesContainer>
                         <NFT elevation={3}>
-                            <h2>My NFT</h2>
+                            <h2 style={{fontFamily:"Courgette"}}>DREADYZ</h2>
                             <br/>
                             <div><Price
                                 label={isActive && whitelistEnabled && (whitelistTokenBalance > 0) ? (whitelistPrice + " " + priceLabel) : (price + " " + priceLabel)}/><Image
-                                src="cool-cats.gif"
+                                src="dreadyz.gif"
                                 alt="NFT To Mint"/></div>
                             <br/>
                             {wallet && isActive && whitelistEnabled && (whitelistTokenBalance > 0) && isBurnToken &&
@@ -624,7 +626,16 @@ const Home = (props: HomeProps) => {
                                         renderer={renderGoLiveDateCounter}
                                     />) : (
                                     !wallet ? (
+                                            <div>
                                             <ConnectButton>Connect Wallet</ConnectButton>
+                                            <CrossmintPayButton
+                                                collectionTitle="DREADYZ"
+                                                collectionDescription="Dipped in love and embraced with acceptance, the 5,555 collection of DREADYZ is officially ready to shake things up on the Solana Ecosystem."
+                                                collectionPhoto="<OPT_URL_TO_PHOTO_COVER>"
+                                                clientId="<YOUR_CLIENT_ID>"
+                                                className="crossmint"
+                                            />
+                                            </div>
                                         ) : (!isWLOnly || whitelistTokenBalance > 0) ?
                                         candyMachine?.state.gatekeeper &&
                                         wallet.publicKey &&
@@ -646,13 +657,29 @@ const Home = (props: HomeProps) => {
                                                 clusterUrl={rpcUrl}
                                                 options={{autoShowModal: false}}
                                             >
-                                                <MintButton
+                                                {/* <MintButton
                                                     candyMachine={candyMachine}
                                                     isMinting={isMinting}
                                                     isActive={isActive}
                                                     isEnded={isEnded}
                                                     isSoldOut={isSoldOut}
                                                     onMint={startMint}
+                                                /> */}
+                                                <MultiMintButton
+                                                    candyMachine={candyMachine}
+                                                    isMinting={isMinting}
+                                                    isActive={isActive}
+                                                    isEnded={isEnded}
+                                                    isSoldOut={isSoldOut}
+                                                    onMint={startMint}
+                                                    price={whitelistEnabled && (whitelistTokenBalance > 0) ? whitelistPrice : price}
+                                                />
+                                                <CrossmintPayButton
+                                                    collectionTitle="DREADYZ"
+                                                    collectionDescription="Dipped in love and embraced with acceptance, the 5,555 collection of DREADYZ is officially ready to shake things up on the Solana Ecosystem."
+                                                    collectionPhoto="<OPT_URL_TO_PHOTO_COVER>"
+                                                    clientId="<YOUR_CLIENT_ID>"
+                                                    className="crossmint"
                                                 />
                                             </GatewayProvider>
                                         ) : (

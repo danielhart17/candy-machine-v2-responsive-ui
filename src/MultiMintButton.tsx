@@ -9,9 +9,10 @@ import {CandyMachine} from './candy-machine';
 export const CTAButton = styled(Button)`
   display: inline-block !important;
   margin: 0 auto !important;
-  background-color: var(--title-text-color) !important;
+  background-color: var(--mint-button-background-color) !important;
   min-width: 120px !important;
   font-size: 1em !important;
+  color: var(--main-text-color) !important;
 `;
 
 export const Minus = styled.button`
@@ -22,7 +23,7 @@ export const Minus = styled.button`
   font-weight: bold;
   line-height: 0.5px;
   color: var(--main-text-color);
-  background: var(--title-text-color);
+  background: var(--mint-button-background-color);
   box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
   border: 0;
   border-radius: 50%;
@@ -92,7 +93,7 @@ export const MultiMintButton = ({
     const [clicked, setClicked] = useState(false);
     const [isVerifying, setIsVerifying] = useState(false);
     const [mintCount, setMintCount] = useState(1);
-    const [totalCost, setTotalCost] = useState(mintCount * (price + 0.012));
+    const [totalCost, setTotalCost] = useState(mintCount * (price + 0.001));
 
     useEffect(() => {
         setIsVerifying(false);
@@ -110,7 +111,7 @@ export const MultiMintButton = ({
         var numericField = document.querySelector(".mint-qty") as HTMLInputElement;
         if (numericField) {
             var value = parseInt(numericField.value);
-            if (!isNaN(value) && value < 10) {
+            if (!isNaN(value) && value < 5) {
                 value++;
                 numericField.value = "" + value;
                 updateAmounts(value);
@@ -133,8 +134,8 @@ export const MultiMintButton = ({
     function updateMintCount(target: any) {
         var value = parseInt(target.value);
         if (!isNaN(value)) {
-            if (value > 10) {
-                value = 10;
+            if (value > 5) {
+                value = 5;
                 target.value = "" + value;
             } else if (value < 1) {
                 value = 1;
@@ -146,7 +147,7 @@ export const MultiMintButton = ({
 
     function updateAmounts(qty: number) {
         setMintCount(qty);
-        setTotalCost(Math.round(qty * (price + 0.012) * 1000) / 1000);  // 0.012 = approx of account creation fees
+        setTotalCost(Math.round(qty * (price + 0.001) * 1000) / 1000);  // 0.001 = approx of account creation fees
     }
 
 
@@ -218,7 +219,7 @@ export const MultiMintButton = ({
                     className="mint-qty"
                     step={1}
                     min={1}
-                    max={10}
+                    max={5}
                     value={mintCount}
                     onChange={(e) => updateMintCount((e.target as any))}
                 />
