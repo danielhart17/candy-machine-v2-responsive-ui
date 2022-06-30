@@ -631,8 +631,9 @@ const Home = (props: HomeProps) => {
                                             <CrossmintPayButton
                                                 collectionTitle="DREADYZ"
                                                 collectionDescription="Dipped in love and embraced with acceptance, the 5,555 collection of DREADYZ is officially ready to shake things up on the Solana Ecosystem."
-                                                collectionPhoto="<OPT_URL_TO_PHOTO_COVER>"
-                                                clientId="<YOUR_CLIENT_ID>"
+                                                collectionPhoto="https://raw.githubusercontent.com/DREADYZ/assets/main/dreadyz-pfp.jpeg"
+                                                clientId="efc3ecb1-e17d-472b-891e-eee6148b7ab0"
+                                                mintConfig={{"type":"candy-machine"}}
                                                 className="crossmint"
                                             />
                                             </div>
@@ -677,8 +678,9 @@ const Home = (props: HomeProps) => {
                                                 <CrossmintPayButton
                                                     collectionTitle="DREADYZ"
                                                     collectionDescription="Dipped in love and embraced with acceptance, the 5,555 collection of DREADYZ is officially ready to shake things up on the Solana Ecosystem."
-                                                    collectionPhoto="<OPT_URL_TO_PHOTO_COVER>"
-                                                    clientId="<YOUR_CLIENT_ID>"
+                                                    collectionPhoto="https://raw.githubusercontent.com/DREADYZ/assets/main/dreadyz-pfp.jpeg"
+                                                    clientId="efc3ecb1-e17d-472b-891e-eee6148b7ab0"
+                                                    mintConfig={{"type":"candy-machine"}}
                                                     className="crossmint"
                                                 />
                                             </GatewayProvider>
